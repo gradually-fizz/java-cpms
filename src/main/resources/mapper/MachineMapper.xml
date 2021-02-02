@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.naughty.userlogin02.dao.MachineDao">
+    <select id="getAllMachineInfo" resultType="com.naughty.userlogin02.bean.Machine">
+       	SELECT * FROM machine
+    </select>
+
+    <select id="getMachineInfo" resultType="com.naughty.userlogin02.bean.Machine">
+        SELECT * FROM machine
+        <if test="(lineId != null and lineId != '') and (machineId == null or machineId == '')">
+            WHERE lineId = #{lineId}
+        </if>
+        <if test="(lineId == null or lineId == '') and (machineId != null and machineId != '')">
+            WHERE machineId = #{machineId}
+        </if>
+        <if test="(lineId != null and  lineId != '') and (machineId != null and machineId != '')">
+            WHERE lineId = #{lineId} and machineId = #{machineId}
+        </if>
+        order by lineId,operation
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+    <select id="getMachineInfoNum" resultType="java.lang.Integer">
+        SELECT count(*) FROM machine
+        <if test="(lineId != null and lineId != '') and (machineId == null or machineId == '')">
+            WHERE lineId = #{lineId}
+        </if>
+        <if test="(lineId == null or lineId == '') and (machineId != null and machineId != '')">
+            WHERE machineId = #{machineId}
+        </if>
+        <if test="(lineId != null and  lineId != '') and (machineId != null and machineId != '')">
+            WHERE lineId = #{lineId} and machineId = #{machineId}
+        </if>
+    </select>
+
+    <select id="getMachineInfoByMachineId" resultType="com.naughty.userlogin02.bean.Machine">
+        SELECT * FROM machine WHERE machineId = #{machineId}
+    </select>
+
+    <update id="updateState">
+        UPDATE machine SET state = #{state} WHERE machineId = #{machineId}
+    </update>
+
+    <insert id="addMachineInfo">
+        INSERT INTO machine
+        (machineId,lineId,operation,state,capability,upMachineId,downMachineId)
+        VALUE
+        (#{machineId},#{lineId},#{operation},#{state},#{capability},#{upMachineId},#{downMachineId})
+    </insert>
+
+
+    <delete id="deleteMachineInfoByMachineId">
+        DELETE FROM machine WHERE machineId = #{machineId}
+    </delete>
+
+</mapper>
