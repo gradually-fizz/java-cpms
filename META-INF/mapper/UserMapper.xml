@@ -2,13 +2,13 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.naughty.userlogin02.dao.UserDao">
+<mapper namespace="tm.mes.cpms.dao.UserDao">
     <select id="getUserByMassage" resultType="java.lang.Integer">
        	SELECT count(id) FROM easyUser
        	WHERE username=#{username} AND password=#{password}
     </select>
 
-    <select id="getAllUser" resultType="com.naughty.userlogin02.bean.User">
+    <select id="getAllUser" resultType="tm.mes.cpms.bean.User">
        	SELECT * FROM easyUser
         <if test="username !=null ">
             WHERE username like #{username}
@@ -23,7 +23,7 @@
         </if>
     </select>
 
-    <select id="getUpdateUser" resultType="com.naughty.userlogin02.bean.User">
+    <select id="getUpdateUser" resultType="tm.mes.cpms.bean.User">
         SELECT * FROM easyuser WHERE id = #{id}
     </select>
 

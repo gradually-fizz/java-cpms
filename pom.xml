@@ -8,11 +8,11 @@
         <version>2.2.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.naughty</groupId>
-    <artifactId>userlogin02</artifactId>
+    <groupId>tm.mes</groupId>
+    <artifactId>cpms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>userlogin02</name>
-    <description>Demo project for Spring Boot</description>
+    <name>cpms</name>
+    <description>Change Point Management System</description>
 
     <properties>
         <java.version>1.8</java.version>

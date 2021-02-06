@@ -2,12 +2,12 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.naughty.userlogin02.dao.MachineDao">
-    <select id="getAllMachineInfo" resultType="com.naughty.userlogin02.bean.Machine">
+<mapper namespace="tm.mes.cpms.dao.MachineDao">
+    <select id="getAllMachineInfo" resultType="tm.mes.cpms.bean.Machine">
        	SELECT * FROM machine
     </select>
 
-    <select id="getMachineInfo" resultType="com.naughty.userlogin02.bean.Machine">
+    <select id="getMachineInfo" resultType="tm.mes.cpms.bean.Machine">
         SELECT * FROM machine
         <if test="(lineId != null and lineId != '') and (machineId == null or machineId == '')">
             WHERE lineId = #{lineId}
@@ -34,7 +34,7 @@
         </if>
     </select>
 
-    <select id="getMachineInfoByMachineId" resultType="com.naughty.userlogin02.bean.Machine">
+    <select id="getMachineInfoByMachineId" resultType="tm.mes.cpms.bean.Machine">
         SELECT * FROM machine WHERE machineId = #{machineId}
     </select>
 
